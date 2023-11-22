@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('main')
+@section('content')
     <main>
         <div class="container mt-3 d-flex flex-column justify-content-center align-item-center" style="height: 400px;">
             <div class="text-center">
@@ -31,7 +31,7 @@
                 </table>
             </div>
             <div>
-                <a href="/admin" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Back to input page</a>
+                <a href="/" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Back to input page</a>
             </div>
         </div>
     </main>

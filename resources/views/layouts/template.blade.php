@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>UTS Framework Web</title>
 
-    {{-- Connect to bootstrap CSS --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Star Admin2 </title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{ asset('/template/vendors/feather/feather.css') }}">
+  <link rel="stylesheet" href="{{ asset('/template/vendors/mdi/css/materialdesignicons.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('/template/vendors/ti-icons/css/themify-icons.css') }}">
+  <link rel="stylesheet" href="{{ asset('/template/vendors/typicons/typicons.css') }}">
+  <link rel="stylesheet" href="{{ asset('/template/vendors/simple-line-icons/css/simple-line-icons.css') }}">
+  <link rel="stylesheet" href="{{ asset('/template/vendors/css/vendor.bundle.base.css') }}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{{ asset('/template/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
+  <link rel="stylesheet" href="{{ asset('/template/js/select.dataTables.min.css') }}">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{ asset('/template/css/vertical-layout-light/style.css') }}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{{ asset('/template/images/favicon.png') }}" />
 </head>
 <body>
-    <nav class="nav bg-dark text-white p-2">
-        <h3>Rexus Store</h3>
-    </nav>
+  
+    @yield('content')
 
-    @yield('main')
+  <!-- plugins:js -->
+  <script src="{{ asset('/template/vendors/js/vendor.bundle.base.js') }}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="{{ asset('/template/vendors/chart.js/Chart.min.js') }}"></script>
+  <script src="{{ asset('/template/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+  <script src="{{ asset('/template/vendors/progressbar.js/progressbar.min.js') }}"></script>
 
-    <footer class="footer bg-dark text-white mt-5">
-        <div class="container p-4 text-center">
-            <h3>RexusStore.com</h3>
-            
-            <nav class="link-light">
-                <ul class="nav justify-content-center">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link link-light">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link link-light">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link link-light">Contact</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <p class="text-secondary">Copyright &copy;2023 All rights reserved | made by <a href="instagram.com/itsnadin_ra" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Nadindra Maulana Aziz</a></p>
-        </div>
-    </footer>
-
-    {{-- Connect to bootstrap JS --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{{ asset('/template/js/off-canvas.js') }}"></script>
+  <script src="{{ asset('/template/js/hoverable-collapse.js') }}"></script>
+  <script src="{{ asset('/template/js/template.js') }}"></script>
+  <script src="{{ asset('/template/js/settings.js') }}"></script>
+  <script src="{{ asset('/template/js/todolist.js') }}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{{ asset('/template/js/jquery.cookie.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('/template/js/dashboard.js') }}"></script>
+  <script src="{{ asset('/template/js/Chart.roundedBarCharts.js') }}"></script>
+  <!-- End custom js for this page-->
 </body>
+
 </html>
+

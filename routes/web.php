@@ -16,7 +16,7 @@ use App\Http\Controllers\controllerBarang;
 */
 
 Route::get('/', function () {
-    return view('layouts.template');
+    return view('contoh');
 });
 
 Route::get('/admin', [controllerBarang::class, 'index']);
