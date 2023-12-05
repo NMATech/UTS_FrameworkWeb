@@ -20,4 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', [controllerBarang::class, 'index']);
-Route::post('/view', [controllerBarang::class, 'store']);
+Route::post('/add-data', [controllerBarang::class, 'store']);
+Route::get('/edit/{id}', [controllerBarang::class, 'viewEdit']);
+Route::put('/update/{id}', [controllerBarang::class, 'update']);

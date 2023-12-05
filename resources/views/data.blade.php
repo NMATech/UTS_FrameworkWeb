@@ -17,21 +17,27 @@
                         <th>Total Harga</th>
                         <th>Potongan Harga</th>
                         <th>Total yang harus diBayar</th>
+                        <th>Edit</th>
                     </tr>
-                    <tr class="text-center">
-                        <td>{{ $data['kodeBarang'] }}</td>
-                        <td>{{ $data['namaBarang'] }}</td>
-                        <td>{{ $data['jenisVarian'] }}</td>
-                        <td>{{ $data['qty'] }}</td>
-                        <td>{{ $data['hargaJual'] }}</td>
-                        <td>{{ $totalPembelanjaan }}</td>
-                        <td>{{ $diskon }}</td>
-                        <td>{{ $total }}</td>
-                    </tr>
+                    @foreach ($datas as $data)
+                        <tr class="text-center">
+                            <td>{{ $data['kodeBarang'] }}</td>
+                            <td>{{ $data['namaBarang'] }}</td>
+                            <td>{{ $data['jenisVarian'] }}</td>
+                            <td>{{ $data['qty'] }}</td>
+                            <td>{{ $data['hargaJual'] }}</td>
+                            <td>{{ $data['totalBelanja'] }}</td>
+                            <td>{{ $data['diskon'] }}</td>
+                            <td>{{ $data['total'] }}</td>
+                            <td><a href="/edit/{{$data['id']}}">Edit</a></td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
             <div>
-                <a href="/" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Back to input page</a>
+                <a href="/"
+                    class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Back to
+                    input page</a>
             </div>
         </div>
     </main>

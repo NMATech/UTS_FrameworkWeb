@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Barang;
+use App\Models\modelBarang;
 
 class controllerBarang extends Controller
 {
@@ -12,7 +12,9 @@ class controllerBarang extends Controller
      */
     public function index()
     {
-        return view("input");
+        return view("data", [
+            "datas" => modelBarang::all()
+        ]);
     }
 
     /**
@@ -28,19 +30,47 @@ class controllerBarang extends Controller
      */
     public function store(Request $request)
     {
-        $barang = new Barang();
+        $barang = new modelBarang();
 
         $kodeBarang = $request->input('kodeBarang');
         $namaBarang = $request->input('namaBarang');
         $jenisVarian = $request->input('jenisVarian');
         $qty = $request->input('qty');
         $hargaJual = $request->input('hargaJual');
+        $pembelanjaan = $qty * $hargaJual;
 
-        return view('data', [
-            'data' => $barang->getData($kodeBarang, $namaBarang, $jenisVarian, $qty, $hargaJual),
-            'totalPembelanjaan' => $barang->setPembelanjaan($qty, $hargaJual),
-            'diskon' => $barang->getDiskon(),
-            'total' => $barang->getTotal()
+        if ($pembelanjaan >= 100000 && $pembelanjaan < 200000) {
+            $diskon = $pembelanjaan * 0.1;
+        } else if ($pembelanjaan >= 200000 && $pembelanjaan < 500000) {
+            $diskon = $pembelanjaan * 0.2;
+        } else if ($pembelanjaan >= 500000) {
+            $diskon = $pembelanjaan * 0.5;
+        }
+
+        $total = $pembelanjaan - $diskon;
+
+        modelBarang::create([
+            'kodeBarang' => $kodeBarang,
+            'namaBarang' => $namaBarang,
+            'jenisVarian' => $jenisVarian,
+            'hargaJual' => $hargaJual,
+            'qty' => $qty,
+            'totalBelanja' => $pembelanjaan,
+            'diskon' => $diskon,
+            'total' => $total,
+        ]);
+
+        echo "<script>alert('Data berhasil masuk!');</script>";
+
+        return view('contoh');
+    }
+
+    public function viewEdit($id)
+    {
+        $barang = modelBarang::find($id);
+
+        return view('editData', [
+            'data' => $barang,
         ]);
     }
 
@@ -55,9 +85,22 @@ class controllerBarang extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request)
     {
-        //
+        $barang = new Barang();
+
+        $kodeBarang = $request->input('kodeBarang');
+        $namaBarang = $request->input('namaBarang');
+        $jenisVarian = $request->input('jenisVarian');
+        $qty = $request->input('qty');
+        $hargaJual = $request->input('hargaJual');
+
+        return view('data', [
+            'data' => $barang->getData($kodeBarang, $namaBarang, $jenisVarian, $qty, $hargaJual),
+            'totalPembelanjaan' => $barang->setPembelanjaan(),
+            'diskon' => $barang->getDiskon(),
+            'total' => $barang->getTotal()
+        ]);
     }
 
     /**
@@ -65,7 +108,40 @@ class controllerBarang extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = modelBarang::find($id);
+
+        $kodeBarang = $request->input('kodeBarang');
+        $namaBarang = $request->input('namaBarang');
+        $jenisVarian = $request->input('jenisVarian');
+        $qty = $request->input('qty');
+        $hargaJual = $request->input('hargaJual');
+
+        $pembelanjaan = $qty * $hargaJual;
+
+        if ($pembelanjaan >= 100000 && $pembelanjaan < 200000) {
+            $diskon = $pembelanjaan * 0.1;
+        } else if ($pembelanjaan >= 200000 && $pembelanjaan < 500000) {
+            $diskon = $pembelanjaan * 0.2;
+        } else if ($pembelanjaan >= 500000) {
+            $diskon = $pembelanjaan * 0.5;
+        }
+
+        $total = $pembelanjaan - $diskon;
+
+        $data->update([
+            'kodeBarang' => $kodeBarang,
+            'namaBarang' => $namaBarang,
+            'jenisVarian' => $jenisVarian,
+            'hargaJual' => $hargaJual,
+            'qty' => $qty,
+            'totalBelanja' => $pembelanjaan,
+            'diskon' => $diskon,
+            'total' => $total,
+        ]);
+
+        return view('data', [
+            "datas" => modelBarang::all()
+        ]);
     }
 
     /**

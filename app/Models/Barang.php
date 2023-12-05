@@ -9,7 +9,7 @@ class Barang extends Model
 {
     use HasFactory;
 
-    private $pembelanjaan, $diskon, $totalBayar;
+    private static $pembelanjaan, $diskon, $totalBayar, $data, $qty, $hargaJual;
 
     public function getData($kodeBarang, $namaBarang, $jenisVarian, $qty, $hargaJual)
     {
@@ -21,12 +21,20 @@ class Barang extends Model
             "hargaJual" => $hargaJual
         ];
 
+        $this->qty = $qty;
+        $this->hargaJual = $hargaJual;
+
         return $data;
     }
 
-    public function setPembelanjaan($qty, $hargaJual)
+    public function Data()
     {
-        $this->pembelanjaan = $qty * $hargaJual;
+        return $this->data;
+    }
+
+    public function setPembelanjaan()
+    {
+        $this->pembelanjaan = $this->qty * $this->hargaJual;
 
         return $this->pembelanjaan;
     }
