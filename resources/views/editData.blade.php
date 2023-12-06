@@ -37,7 +37,7 @@
                             value="{{ $data['hargaJual'] }}">
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                    <button class="btn btn-light"><a href="/admin">Cancel</a></button>
                 </form>
             </div>
         </div>

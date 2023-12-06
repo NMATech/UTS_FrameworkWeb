@@ -1,7 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
-    <div class="col-md-6 grid-margin stretch-card">
+    <div class="col-md-6 grid-margin stretch-card m-5 container-fluid">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Form tambah barang</h4>

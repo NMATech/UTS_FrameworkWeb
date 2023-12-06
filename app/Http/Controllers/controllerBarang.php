@@ -60,7 +60,7 @@ class controllerBarang extends Controller
             'total' => $total,
         ]);
 
-        echo "<script>alert('Data berhasil masuk!');</script>";
+        echo "<script>alert('data berhasil masuk')</script>";
 
         return view('contoh');
     }
@@ -149,6 +149,12 @@ class controllerBarang extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        modelBarang::find($id)->delete();
+
+        echo "<script>alert('data berhasil dihapus')</script>";
+
+        return view('data', [
+            "datas" => modelBarang::all()
+        ]);
     }
 }

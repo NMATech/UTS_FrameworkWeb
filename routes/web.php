@@ -23,3 +23,4 @@ Route::get('/admin', [controllerBarang::class, 'index']);
 Route::post('/add-data', [controllerBarang::class, 'store']);
 Route::get('/edit/{id}', [controllerBarang::class, 'viewEdit']);
 Route::put('/update/{id}', [controllerBarang::class, 'update']);
+Route::get('/delete/{id}', [controllerBarang::class, 'destroy']);

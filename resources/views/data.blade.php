@@ -18,6 +18,7 @@
                         <th>Potongan Harga</th>
                         <th>Total yang harus diBayar</th>
                         <th>Edit</th>
+                        <th>Hapus</th>
                     </tr>
                     @foreach ($datas as $data)
                         <tr class="text-center">
@@ -29,7 +30,8 @@
                             <td>{{ $data['totalBelanja'] }}</td>
                             <td>{{ $data['diskon'] }}</td>
                             <td>{{ $data['total'] }}</td>
-                            <td><a href="/edit/{{$data['id']}}">Edit</a></td>
+                            <td><a href="/edit/{{ $data['id'] }}">Edit</a></td>
+                            <td><a href="/delete/{{ $data['id'] }}">Hapus</a></td>
                         </tr>
                     @endforeach
                 </table>
